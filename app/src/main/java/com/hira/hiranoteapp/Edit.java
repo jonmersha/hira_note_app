@@ -11,15 +11,9 @@ import android.widget.EditText;
 import com.hira.hiranoteapp.room.AppDatabase;
 import com.hira.hiranoteapp.room.Note;
 import com.hira.hiranoteapp.util.Const;
-
 import org.joda.time.DateTime;
-
 public class Edit extends AppCompatActivity {
-
     private AppDatabase db;
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +21,10 @@ public class Edit extends AppCompatActivity {
     }
     public void saveNote(View v) {
         EditText text_body=findViewById(R.id.note_body);
+        EditText text_title=findViewById(R.id._title);
         Note note=new Note();
+
+        note.note_title=text_title.getText().toString();
         note.noteBody=text_body.getText().toString();
         note.createdAt=new DateTime().toString();
         MainActivity.model.add_note(note);

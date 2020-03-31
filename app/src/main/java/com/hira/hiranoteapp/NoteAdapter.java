@@ -1,6 +1,7 @@
 package com.hira.hiranoteapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.provider.ContactsContract;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -14,6 +15,8 @@ import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.hira.hiranoteapp.room.Note;
+
+import org.joda.time.DateTime;
 
 import java.util.ArrayList;
 
@@ -49,21 +52,31 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull NoteViewHolder holder, int position) {
-        Note note=notes.get(position);
+        final Note note=notes.get(position);
+
         holder.noteBody.setText(note.noteBody);
+        holder.note_title.setText(note.note_title);
+
+
+        DateTime dateTime = new DateTime(note.createdAt);
+        String day=""+dateTime.getDayOfMonth();
+        String month=""+dateTime.getMonthOfYear();
+        String year=""+dateTime.getYear();
+
+        holder.date_text.setText(day+"/"+month+"/"+year);
+
         holder.noteBody.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent i =new Intent(v.getContext(),ReadNote.class);
+                i.putExtra("title",note.note_title);
+                i.putExtra("body",note.noteBody);
+                i.putExtra("id",note.uid);
+                v.getContext().startActivity(i);
 
             }
         });
-        holder.button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(v.getContext(), "Sharing Trigered", Toast.LENGTH_SHORT).show();
 
-            }
-        });
 
     }
 

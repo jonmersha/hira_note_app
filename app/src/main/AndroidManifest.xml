@@ -3,14 +3,15 @@
     package="com.hira.hiranoteapp">
 
     <application
+        android:name=".App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:name=".App"
         android:theme="@style/AppTheme">
-        <activity android:name=".Edit"></activity>
+        <activity android:name=".ReadNote"></activity>
+        <activity android:name=".Edit" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,10 +19,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <provider
-            android:authorities="com.hira.hiranoteapp.data.NotesProvider"
             android:name=".data.NotesProvider"
-            android:exported="false"/>
+            android:authorities="com.hira.hiranoteapp.data.NotesProvider"
+            android:exported="false" />
     </application>
 
 </manifest>

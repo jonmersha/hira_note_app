@@ -1,27 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:elevation="1dp"
+    app:cardCornerRadius="5dp"
     >
-    <TextView
-        android:id="@+id/note_title"
+
+    <LinearLayout
+
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:text="This IS new Course"
-        android:background="#000"
-        android:textColor="#fff"
-        android:layout_centerInParent="true"
-        android:layout_toStartOf="@+id/share"
-        />
+        android:layout_marginTop="1dp"
 
-    <Button
-        android:id="@+id/share"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_alignParentEnd="true"
-        android:background="@drawable/ic_share_black_24dp"
-        android:layout_centerInParent="true"
+        >
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#0D81C9">
 
-        />
-</RelativeLayout>
+            <TextView
+                android:id="@+id/date_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Mar   30 2020"
+                android:textAlignment="center"
+                android:textColor="#fff"
+                android:textSize="15dp"
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:orientation="vertical"
+            android:background="#F6F6F6"
+            >
+
+            <TextView
+                android:id="@+id/note_title"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="3"
+                android:background="#6FF1EDEF"
+                android:paddingLeft="10dp"
+                android:text="Android material Design"
+                android:textColor="#009688"
+                android:textSize="20dp"
+                />
+            <TextView
+                android:id="@+id/text_body"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="5"
+                android:paddingHorizontal="5dp"
+                android:paddingLeft="10dp"
+                android:text="Material design is a comprehensive guide for visual, motion, and …."
+                android:textColor="#044842"
+                android:textSize="15dp"
+                android:background="#6FF1EDEF"
+
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+</androidx.cardview.widget.CardView>
